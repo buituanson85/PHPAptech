@@ -8,21 +8,16 @@ function register(){
         $phoneNumner = $_POST['phone'];
         //tạo kết nối đến data
 
-        $connect = new mysqli("localhost", "root","","sessionone");
-        //cho phép gõ tiếng việt
-        mysqli_set_charset ($connect,"utf8");
-        //kiểm tra kết nối
-        if ($connect -> connect_error){
-            var_dump ($connect -> connect_error);
-            die();
-        }
+        require_once("DBConnection.php");
+
         //thực hiện câu lệnh truy vấn dữ liệu
         $query = "insert into student(fullname, username, password, email, phone)
             values ('".$fullName."', '".$userName."', '".$password."', '".$email."', '".$phoneNumner."')";
+
         mysqli_query ($connect, $query);
 
         //đóng kết nối
-        $connect -> close();
+        require_once("DBClose.php");
 
         header ("Location: login.php");
     }
