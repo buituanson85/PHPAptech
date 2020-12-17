@@ -10,7 +10,7 @@ function register(){
 
         $connect = new mysqli("localhost", "root","","sessionone");
         //cho phép gõ tiếng việt
-//        mysql::set_charset ($connect,"utf8");
+        mysqli_set_charset ($connect,"utf8");
         //kiểm tra kết nối
         if ($connect -> connect_error){
             var_dump ($connect -> connect_error);

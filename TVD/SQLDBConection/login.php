@@ -1,13 +1,13 @@
 <?php
- session_start ();//yc phia sever xay dung phien lam viec phia sever phai dc dat dau tien
+session_start ();
+require_once ("login_php.php");
+login ();
 
-
-require_once ("register.php");
-register ();
 ?>
+
 <!doctype html>
 <html>
-<head>   8F2C4C92
+<head>
     <title>PHP Tutorial</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,25 +20,12 @@ register ();
 <div class="container-fluid">
     <form method="POST" action="">
         <div class="form-group">
-            <label for="userName">UserName:</label>
-            <input type="text" class="form-control" placeholder="Enter EserName" id="userName" name="userName">
-        </div>
-        <div class="form-group">
-            <label for="name">Full name:</label>
-            <input type="text" class="form-control" placeholder="Enter name" id="name" name="name">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" placeholder="Enter email" id="email" name="email">
         </div>
         <div class="form-group">
             <label for="pwd">Password:</label>
             <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="pwd">
-        </div>
-        <div class="form-group">
-            <label for="email">Email address:</label>
-            <input type="email" class="form-control" placeholder="Enter Email" id="email" name="email">
-        </div>
-
-        <div class="form-group">
-            <label for="phone">Phone number:</label>
-            <input type="number" class="form-control" placeholder="Enter phone number" id="phone" name="phone">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
