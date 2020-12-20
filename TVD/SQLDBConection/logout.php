@@ -2,4 +2,4 @@
 session_start ();
 session_destroy ();//xoas session
 
-header ("Location: index.php");
+header ("Location: Car.php");

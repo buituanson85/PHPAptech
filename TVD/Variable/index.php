@@ -13,7 +13,7 @@
 //echo $x."-".$y."<br/>".$str;
 
 //khai  báo mảng --> là biến chứa tập hợp các dữ liệu với nhau
-//length 5 phần tử , max- index: 4 , index 0--> 4
+//length 5 phần tử , max- car: 4 , car 0--> 4
 //$arr = array(
 //    1, 5 ,7 ,8 ,10 // mảng số nguyên
 //);
