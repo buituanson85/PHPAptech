@@ -22,8 +22,11 @@ function executeResult($sql){
 
     $result = mysqli_query ($conn, $sql);
     $list = [];
-    while ($row = mysqli_fetch_array ($result, 1)){
-        $list[] = $row;
+
+    if ($result != null){
+        while ($row = mysqli_fetch_array ($result, 1)){
+            $list[] = $row;
+        }
     }
     //đóng connection
     mysqli_close ($conn);
@@ -38,7 +41,10 @@ function executeSingleResult($sql){
     //viết câu truy vấn
 
     $result = mysqli_query ($conn, $sql);
-    $row = mysqli_fetch_array ($result, 1);
+    $row = null;
+    if ($result != null){
+        $row = mysqli_fetch_array ($result, 1);
+    }
 
     //đóng connection
     mysqli_close ($conn);
