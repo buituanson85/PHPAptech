@@ -7,7 +7,7 @@ register ();
 ?>
 <!doctype html>
 <html>
-<head>   8F2C4C92
+<head>
     <title>PHP Tutorial</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
