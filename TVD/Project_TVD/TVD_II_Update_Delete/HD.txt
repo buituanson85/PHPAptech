@@ -1,0 +1,38 @@
+I.Amin
+    - thiết kế database
+    - phát truyển quản lý danh mục
+    - phát truyển quản lý sảng phẩm
+II.Frontend
+    - Home
+    - danh mục sản phẩm
+    - chi tiết sản phẩm
+III. Tối ưu giao diện(UI & UX)
+IV. tối ưu code
+
+===================================================
+I.Phát triển phần Amin
+1.Thiết kế database
+-table Category
+create table category(
+    id int primary key auto_increment,
+    name varchar(50) not null,
+    created_at datetime,
+    updated_at datetime
+)
+-Table Product
+create table product(
+    id int primary key auto_increment,
+    title varchar(200) not null,
+    price float,
+    thumbnail varchar(500),
+    content longtext,
+    id_category int references category(id),
+    created_at datetime,
+    updated_at datetime
+);
+2.Thiết kế chức năng phần amin
+- quản lý danh mục
+    + hiển thị danh sách
+    + thêm / sửa / xoá
+- quản lý sản phẩm
+    + hiển thị danh sách sản phẩm
