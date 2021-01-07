@@ -51,53 +51,110 @@ class product {
             }
         }
     }
-//    //hiển thị danh mục sản phẩm
-//    public function show_brand(){
-//        $query = "select * from tbl_brand order  by brandId desc ";
-//        $result = $this->db->select ($query);
-//        return $result;
-//    }
-//
-//    //updagte
-//    public function getbrandbyId($brandId){
-//        $query = "select * from tbl_brand where brandId = '$brandId'";
-//        $result = $this->db->select ($query);
-//        return $result;
-//    }
-//    public function update_brand($brandName, $brandId){
-//        $brandName = $this->format->validation ($brandName);
-//
-//        $brandName = mysqli_real_escape_string ($this->db->link, $brandName);
-//        $brandId = mysqli_real_escape_string ($this->db->link, $brandId);
-//
-//        if (empty($brandName)){ // kiểm tra người dùng có nhập hay ko
-//            $alert = "<span class='error' style='color: red'>Brand must be not empty</span>";
-//            return $alert;
-//        }else{ // nếu đã nhập kiểm tra tiếp trong db nếu đúng vào amin sai hiển thị ra thông báo
-//            $query = "update tbl_brand set brandName = '$brandName' where brandId = '$brandId'";
-//            $result = $this->db->update ($query);
-//            if ($result){
-//                $alert = "<span class='success' style='color: green'>Brand update Successfully</span>";
-//                return $alert;
-//            }else{
-//                $alert = "<span class='error' style='color: red'>Brand update not Successfully</span>";
-//                return $alert;
-//            }
-//        }
-//    }
-//
+    //hiển thị danh mục sản phẩm
+    public function showProduct(){
+        $query = "select tbl_product.*,tbl_category.catName, tbl_brand.brandName 
+            from tbl_product inner join tbl_category
+            on tbl_product.category = tbl_category.catId
+            inner join tbl_brand
+            on tbl_product.brand = tbl_brand.brandId
+            order  by productId desc ";
+        $result = $this->db->select ($query);
+        return $result;
+    }
+
+    //updagte
+    public function getProductbyId($productId){
+        $query = "select * from tbl_product where productId = '$productId'";
+        $result = $this->db->select ($query);
+        return $result;
+    }
+    public function update_product($data, $files, $id){
+
+
+        $productName = mysqli_real_escape_string ($this->db->link, $data['productName']);
+        $category = mysqli_real_escape_string ($this->db->link, $data['category']);
+        $brand = mysqli_real_escape_string ($this->db->link, $data['brand']);
+        $product_desc = mysqli_real_escape_string ($this->db->link, $data['product_desc']);
+        $type = mysqli_real_escape_string ($this->db->link, $data['type']);
+        $price = mysqli_real_escape_string ($this->db->link, $data['price']);
+
+        //kiểm tra hình ảnh và lấy hình ảnh cho vào foder uploads
+        $permited = array ('ipg', 'ipeg', 'png', 'gif');
+        $file_name = $_FILES['image']['name'];
+        $file_size = $_FILES['image']['size'];
+        $file_temp = $_FILES['image']['tmp_name'];
+
+        $div = explode ('.', $file_name);
+        $file_ext = strtolower (end ($div));
+        $unique_image = substr (md5(time ()), 0, 10).'.'.$file_ext;
+        $uploaded_image = "uploads/".$unique_image;
+
+        if ($productName == "" || $category == "" || $brand == ""|| $product_desc == "" || $price == "" || $type == ""){ // kiểm tra người dùng có nhập hay ko
+            $alert = "<span class='error' style='color: red'>Fiels must be not empty</span>";
+            return $alert;
+        }else{
+            if (!empty($file_name)){//nếu người dùng chọn ảnh
+                if ($file_size > 1000000){
+                    $alert = "<span style='color: red'>Image Size should be less then 2MB!</span>";
+                    return $alert;
+                }
+                elseif (in_array ($file_ext, $permited)){
+//                    echo "<span class='error'>You can upload only:-".implode (', ', $permited)."</span>";
+                    $alert = "<span style='color: red'>You can upload only: ".implode (', ', $permited)."</span>";
+                    return $alert;
+                }
+                move_uploaded_file ($file_temp, $uploaded_image);
+                $query = "update tbl_product set
+                       productName = '$productName',
+                       category    = '$category',
+                       brand = '$brand',
+                       product_desc = '$product_desc',
+                       type = '$type',
+                       price = '$price',
+                       image = '$unique_image'
+                where productId = '$id'";
+                $result = $this->db->update ($query);
+                if ($result){
+                    $alert = "<span class='success' style='color: green'>Product update Successfully</span>";
+                    return $alert;
+                }else{
+                    $alert = "<span class='error' style='color: red'>Product update not Successfully</span>";
+                    return $alert;
+                }
+            }else{//nếu người dùng ko chọn ảnh
+                $query = "update tbl_product set
+                       productName = '$productName',
+                       category    = '$category',
+                       brand = '$brand',
+                       product_desc = '$product_desc',
+                       type = '$type',
+                       price = '$price'
+                where productId = '$id'";
+                $result = $this->db->update ($query);
+                if ($result){
+                    $alert = "<span class='success' style='color: green'>Product update Successfully</span>";
+                    return $alert;
+                }else{
+                    $alert = "<span class='error' style='color: red'>Product update not Successfully</span>";
+                    return $alert;
+                }
+            }
+        }
+    }
+
 //    //delete
-//    public function del_brand ($brandId){
-//        $query = "delete from tbl_brand where brandId = '$brandId'";
-//        $result = $this->db->delete ($query);
-//        if ($result){
-//            $alert = "<span class='success' style='color: green'>Brand deleted Successfully</span>";
-//            return $alert;
-//        }else{
-//            $alert = "<span class='error' style='color: red'>Brand deleted not Successfully</span>";
-//            return $alert;
-//        }
-//    }
+    public function del_product ($id){
+        $query = "delete from tbl_product where productId = '$id'";
+        $result = $this->db->delete ($query);
+        if ($result){
+            $alert = "<span class='success' style='color: green'>product deleted Successfully</span>";
+            return $alert;
+        }else{
+            $alert = "<span class='error' style='color: red'>product deleted not Successfully</span>";
+            return $alert;
+        }
+    }
 }
 
 
