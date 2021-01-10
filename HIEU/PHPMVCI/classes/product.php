@@ -1,6 +1,7 @@
 <?php
-    include_once '../lib/database.php';
-    include_once '../helpers/format.php';
+    $filepath = realpath (dirname (__FILE__));
+    include_once ($filepath.'/../lib/database.php');
+    include_once ($filepath.'/../helpers/format.php');
 ?>
 
 <?php
@@ -154,6 +155,31 @@ class product {
             $alert = "<span class='error' style='color: red'>product deleted not Successfully</span>";
             return $alert;
         }
+    }
+
+    //kết thúc backend.
+
+    public function getproduct_feathered(){
+        $query = "select * from tbl_product where type = '0'";
+        $result = $this->db->select ($query);
+        return $result;
+    }
+
+    public function getproduct_new(){
+        $query = "select * from tbl_product order by productId desc LIMIT 4";
+        $result = $this->db->select ($query);
+        return $result;
+    }
+
+    public function get_details($id){
+        $query = "select tbl_product.*,tbl_category.catName, tbl_brand.brandName 
+            from tbl_product inner join tbl_category
+            on tbl_product.category = tbl_category.catId
+            inner join tbl_brand
+            on tbl_product.brand = tbl_brand.brandId
+            where tbl_product.productId = '$id'";
+        $result = $this->db->select ($query);
+        return $result;
     }
 }
 
