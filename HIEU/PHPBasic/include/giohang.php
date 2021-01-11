@@ -1,4 +1,15 @@
 <?php
+
+$con = mysqli_connect("localhost:3306","root","","banhangdienmay");
+
+// Check connection
+if (mysqli_connect_errno()) { //khi kết nỗi lỗi
+    echo "Failed to connect to MySQL: " . mysqli_connect_errno() -> connect_error;
+}
+
+mysqli_set_charset ($con, "utf8"); //sét font
+?>
+<?php
 if (isset($_POST['themgiohang'])){
     $tensanpham = $_POST['tensanpham'];
     $sanpham_id = $_POST['sanpham_id'];
@@ -48,9 +59,23 @@ if (isset($_POST['themgiohang'])){
     $address = $_POST['address'];
     $note = $_POST['note'];
     $giaohang = $_POST['giaohang'];
+    $khach_hang = "insert into tbl_khachhang( name, phone, address, note, email, giaohang) values ( '$name', '$phone', '$address', '$note', '$email', '$giaohang')";
+    $sql_khachhang = mysqli_query ($con, $khach_hang);
+    //lưu đơn hàng sau khi khach hang da khai bao thong tin thanh cong.
+    if ($sql_khachhang){
+        $sql_select_khachhang = mysqli_query ($con, "select * from tbl_khachhang order by khachhang_id desc LIMIT 1");
+        $mahang = rand (0,9999);
+        $row_khachhang = mysqli_fetch_array ($sql_select_khachhang);
+        $khachhang_id = $row_khachhang['khachhang_id'];
+        for($i = 0; $i < count($_POST['thanhtoan_product_id']); $i++){
 
-    $giaohang = "insert into tbl_khachhang( name, phone, address, note, email, giaohang) values ( '$name', '$phone', '$address', '$note', '$email', '$giaohang')";
-    $sql_giaohang = mysqli_query ($con, $giaohang);
+            $sanpham_id = $_POST['thanhtoan_product_id'][$i];
+            $soluong = $_POST['thanhtoan_soluong'][$i];
+            $sql_donhang = mysqli_query ($con, "insert into tbl_donhang( sanpham_id, soluong, mahang, khachhang_id) values ( '$sanpham_id', '$soluong', '$mahang', '$khachhang_id')");
+            $sql_delete_thanhtoan = mysqli_query ($con, "delete from tbl_giohang where sanpham_id = '$sanpham_id'");
+        }
+
+    }
 }
 ?>
 
@@ -167,6 +192,18 @@ if (isset($_POST['themgiohang'])){
                                     </select>
                                 </div>
                             </div>
+                                <?php
+                                    $lay_thanhtoan_giohang = "select * from tbl_giohang order by giohang_id desc";
+                                    $sql_lay_thanhtoan_giohang = mysqli_query ($con, $lay_thanhtoan_giohang);
+                                    if ($sql_lay_thanhtoan_giohang){
+                                        while ($row_lay_thanhtoan_giohang = mysqli_fetch_array ($sql_lay_thanhtoan_giohang)){
+                                ?>
+                            <input type="hidden" name="thanhtoan_soluong[]" value="<?php echo $row_lay_thanhtoan_giohang['soluong'] ?>" min="0">
+                            <input type="hidden" name="thanhtoan_product_id[]" value="<?php echo $row_lay_thanhtoan_giohang['sanpham_id'] ?>" min="0">
+                                <?php
+                                        }
+                                    }
+                                ?>
                             <input type="submit" name="thanhtoan" class="btn btn-success" style="width: 20%" value="Thanh toán">
                         </div>
                     </div>

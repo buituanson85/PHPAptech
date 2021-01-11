@@ -24,6 +24,6 @@ function register(){
         //đóng kết nối
         $connect -> close();
 
-        header ("Location: login.php");
+        header ("Location: index.php");
     }
 }

@@ -12,6 +12,6 @@ if (isset($_POST['pwd'])){
 }
 
 if ($password != "" && $userName != ""){
-    header ('Location: login.php?userName='.$userName.'&pwd='.$password);
+    header ('Location: index.php?userName='.$userName.'&pwd='.$password);
     die();//lấy dữ liệu song dừng luôn ko trả về html
 }

@@ -19,6 +19,6 @@ function register(){
         //đóng kết nối
         require_once("DBClose.php");
 
-        header ("Location: login.php");
+        header ("Location: index.php");
     }
 }

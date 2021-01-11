@@ -31,7 +31,7 @@ class Session{
         self::init();
         if (self::get("adminlogin")== false) {
             self::destroy();
-            header("Location:login.php");
+            header("Location:index.php");
         }
     }
 
@@ -44,7 +44,7 @@ class Session{
 
     public static function destroy(){
         session_destroy();
-        header("Location:login.php");
+        header("Location:index.php");
     }
 }
 ?>
