@@ -25,6 +25,29 @@
 </head>
 
 <body>
+<div class="col-lg-12" style="padding-top: 30px">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.php">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Đơn hàng <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="xulydanhmuc.php?quanly=danhmuc">Danh mục</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="xulysanpham.php">Sản phẩm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Khách hàng</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
 <div class="container">
     <div class="row" style="padding-top: 30px">
         <?php
