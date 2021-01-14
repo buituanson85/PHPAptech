@@ -45,7 +45,7 @@
                             <a class="nav-link" href="dashboard.php">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Đơn hàng <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="xulydonhang.php">Đơn hàng <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="xulydanhmuc.php?quanly=danhmuc">Danh mục</a>
@@ -54,7 +54,7 @@
                             <a class="nav-link" href="xulysanpham.php">Sản phẩm</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Khách hàng</a>
+                            <a class="nav-link disabled" href="xulykhachhang.php">Khách hàng</a>
                         </li>
                     </ul>
                 </div>

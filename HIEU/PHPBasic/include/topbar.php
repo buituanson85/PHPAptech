@@ -1,33 +1,64 @@
+<?php
+
+if (isset($_POST['dangnhap_home'])){
+    $taikhoan = $_POST['email_login'];
+    $matkhau = md5($_POST['password_login']);
+    if ($taikhoan == '' || $matkhau == ''){
+        echo "<script> alert('ko để chống')</script>";
+    }else{
+        $sql_select_login = mysqli_query ($con, "select * from tbl_khachhang where email = '$taikhoan' and password = '$matkhau' LIMIT 1");
+        $count = mysqli_num_rows ($sql_select_login);
+        $row_dangnhap = mysqli_fetch_array ($sql_select_login);
+        if ($count > 0){
+            //khai báo session để dữ phiên làm việc
+            $_SESSION['dangnhap_home'] = $row_dangnhap['name'];
+            $_SESSION['khachhang_id'] = $row_dangnhap['khachhang_id'];
+            header ('Location: index.php?quanly=giohang');
+        }else{
+            echo "<script> alert('Mật khẩu or tk sai')</script>";
+        }
+    }
+}elseif (isset($_POST['dangky'])){
+    $name = $_POST['name'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $note = $_POST['note'];
+    $giaohang = $_POST['giaohang'];
+    $password = md5 ($_POST['password']);
+    $khach_hang = "insert into tbl_khachhang( name, phone, address, note, email, giaohang, password) values ( '$name', '$phone', '$address', '$note', '$email', '$giaohang', '$password')";
+    $sql_khachhang = mysqli_query ($con, $khach_hang);
+    $sql_select_khachhang = mysqli_query ($con, "select * from tbl_khachhang order by khachhang_id desc limit 1");
+    $row_khachang = mysqli_fetch_array ($sql_select_khachhang);
+
+    $_SESSION['dangnhap_home'] = $name;
+    $_SESSION['khachhang_id'] = $row_khachang['khachhang_id'];
+    header ('Location: index.php?quanly=giohang');
+}
+?>
 <!-- top-header -->
 <div class="agile-main-top">
     <div class="container-fluid">
         <div class="row main-top-w3l py-2">
             <div class="col-lg-4 header-most-top">
-                <p class="text-white text-lg-left text-center">Offer Zone Top Deals & Discounts
-                    <i class="fas fa-shopping-cart ml-1"></i>
-                </p>
             </div>
             <div class="col-lg-8 header-right mt-lg-0 mt-2">
                 <!-- header lists -->
                 <ul>
                     <li class="text-center border-right text-white">
-                        <a class="play-icon popup-with-zoom-anim text-white" href="#small-dialog1">
-                            <i class="fas fa-map-marker mr-2"></i>Select Location</a>
-                    </li>
-                    <li class="text-center border-right text-white">
                         <a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
-                            <i class="fas fa-truck mr-2"></i>Track Order</a>
+                            <i class="fas fa-truck mr-2"></i>Xem đơn hàng</a>
                     </li>
                     <li class="text-center border-right text-white">
                         <i class="fas fa-phone mr-2"></i> 001 234 5678
                     </li>
                     <li class="text-center border-right text-white">
-                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
-                            <i class="fas fa-sign-in-alt mr-2"></i> Log In </a>
+                        <a href="#" data-toggle="modal" data-target="#dangnhap" class="text-white">
+                            <i class="fas fa-sign-in-alt mr-2"></i> Đăng nhập </a>
                     </li>
                     <li class="text-center text-white">
-                        <a href="#" data-toggle="modal" data-target="#exampleModal2" class="text-white">
-                            <i class="fas fa-sign-out-alt mr-2"></i>Register </a>
+                        <a href="#" data-toggle="modal" data-target="#dangky" class="text-white">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Đăng ký </a>
                     </li>
                 </ul>
                 <!-- //header lists -->
@@ -36,28 +67,13 @@
     </div>
 </div>
 
-<!-- Button trigger modal(select-location) -->
-<div id="small-dialog1" class="mfp-hide">
-    <div class="select-city">
-        <h3>
-            <i class="fas fa-map-marker"></i> Please Select Your Location</h3>
-        <select class="list_of_cities">
-            <optgroup label="Popular Cities">
-                <option selected style="display:none;color:#eee;">Select City</option>
-            </optgroup>
-        </select>
-        <div class="clearfix"></div>
-    </div>
-</div>
-<!-- //shop locator (popup) -->
-
 <!-- modals -->
 <!-- log in -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="dangnhap" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center">Log In</h5>
+                <h5 class="modal-title text-center">Đăng nhập</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -65,25 +81,19 @@
             <div class="modal-body">
                 <form action="#" method="post">
                     <div class="form-group">
-                        <label class="col-form-label">Username</label>
-                        <input type="text" class="form-control" placeholder=" " name="Name" required="">
+                        <label class="col-form-label">Email</label>
+                        <input type="text" class="form-control" placeholder=" " name="email_login" required="">
                     </div>
                     <div class="form-group">
-                        <label class="col-form-label">Password</label>
-                        <input type="password" class="form-control" placeholder=" " name="Password" required="">
+                        <label class="col-form-label">Mật khẩu</label>
+                        <input type="password" class="form-control" placeholder=" " name="password_login" required="">
                     </div>
                     <div class="right-w3l">
-                        <input type="submit" class="form-control" value="Log in">
+                        <input type="submit" name="dangnhap_home" class="form-control" value="Đăng nhập">
                     </div>
-                    <div class="sub-w3l">
-                        <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                            <label class="custom-control-label" for="customControlAutosizing">Remember me?</label>
-                        </div>
-                    </div>
-                    <p class="text-center dont-do mt-3">Don't have an account?
+                    <p class="text-center dont-do mt-3">Nếu chưa có tài khoản?
                         <a href="#" data-toggle="modal" data-target="#exampleModal2">
-                            Register Now</a>
+                            Đăng ký ngay</a>
                     </p>
                 </form>
             </div>
@@ -91,11 +101,11 @@
     </div>
 </div>
 <!-- register -->
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="dangky" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Register</h5>
+                <h5 class="modal-title">Đăng ký</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -103,29 +113,32 @@
             <div class="modal-body">
                 <form action="#" method="post">
                     <div class="form-group">
-                        <label class="col-form-label">Your Name</label>
-                        <input type="text" class="form-control" placeholder=" " name="Name" required="">
+                        <label class="col-form-label">Tên khách hàng</label>
+                        <input type="text" class="form-control" placeholder=" " name="name" required="">
                     </div>
                     <div class="form-group">
                         <label class="col-form-label">Email</label>
-                        <input type="email" class="form-control" placeholder=" " name="Email" required="">
+                        <input type="email" class="form-control" placeholder=" " name="email" required="">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Phone</label>
+                        <input type="text" class="form-control" placeholder=" " name="phone" required="">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Address</label>
+                        <input type="text" class="form-control" placeholder=" " name="address" required="">
                     </div>
                     <div class="form-group">
                         <label class="col-form-label">Password</label>
-                        <input type="password" class="form-control" placeholder=" " name="Password" id="password1" required="">
+                        <input type="password" class="form-control" placeholder=" " name="password"  required="">
+                        <input type="hidden" class="form-control" placeholder=" " name="giaohang" value="0"  required="">
                     </div>
                     <div class="form-group">
-                        <label class="col-form-label">Confirm Password</label>
-                        <input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required="">
+                        <label class="col-form-label">Ghi chú</label>
+                        <textarea class="form-control" name="note"></textarea>
                     </div>
                     <div class="right-w3l">
-                        <input type="submit" class="form-control" value="Register">
-                    </div>
-                    <div class="sub-w3l">
-                        <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="customControlAutosizing2">
-                            <label class="custom-control-label" for="customControlAutosizing2">I Accept to the Terms & Conditions</label>
-                        </div>
+                        <input type="submit" class="form-control" name="dangky" value="Đăng ký">
                     </div>
                 </form>
             </div>

@@ -52,30 +52,53 @@ if (isset($_POST['themgiohang'])){
     $id = $_GET['xoa'];
     $del_giohang = "delete from tbl_giohang where giohang_id = '$id'";
     $sql_del = mysqli_query ($con, $del_giohang);
-}elseif (isset($_POST['thanhtoan'])){
+
+}elseif (isset($_GET['dangxuat'])){
+    $id = $_GET['dangxuat'];
+    if ($id == 1){
+        unset($_SESSION['dangnhap_home']);
+    }
+} elseif (isset($_POST['thanhtoan'])){
     $name = $_POST['name'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
     $address = $_POST['address'];
     $note = $_POST['note'];
     $giaohang = $_POST['giaohang'];
-    $khach_hang = "insert into tbl_khachhang( name, phone, address, note, email, giaohang) values ( '$name', '$phone', '$address', '$note', '$email', '$giaohang')";
+    $password = md5 ($_POST['password']);
+    $khach_hang = "insert into tbl_khachhang( name, phone, address, note, email, giaohang, password) values ( '$name', '$phone', '$address', '$note', '$email', '$giaohang', '$password')";
     $sql_khachhang = mysqli_query ($con, $khach_hang);
     //lưu đơn hàng sau khi khach hang da khai bao thong tin thanh cong.
-    if ($sql_khachhang){
+    if ($sql_khachhang) {
         $sql_select_khachhang = mysqli_query ($con, "select * from tbl_khachhang order by khachhang_id desc LIMIT 1");
-        $mahang = rand (0,9999);
+        $mahang = rand (0, 9999);
         $row_khachhang = mysqli_fetch_array ($sql_select_khachhang);
         $khachhang_id = $row_khachhang['khachhang_id'];
-        for($i = 0; $i < count($_POST['thanhtoan_product_id']); $i++){
+        $_SESSION['dangnhap_home'] = $row_khachhang['name'];
+        $_SESSION['khachhang_id'] = $khachhang_id;
+        for ($i = 0; $i < count ($_POST['thanhtoan_product_id']); $i ++) {
 
             $sanpham_id = $_POST['thanhtoan_product_id'][$i];
             $soluong = $_POST['thanhtoan_soluong'][$i];
             $sql_donhang = mysqli_query ($con, "insert into tbl_donhang( sanpham_id, soluong, mahang, khachhang_id) values ( '$sanpham_id', '$soluong', '$mahang', '$khachhang_id')");
+            $sql_giaodich = mysqli_query ($con, "insert into tbl_giaodich( sanpham_id, soluong, magiaodich, khachhang_id) values ( '$sanpham_id', '$soluong', '$mahang', '$khachhang_id')");
             $sql_delete_thanhtoan = mysqli_query ($con, "delete from tbl_giohang where sanpham_id = '$sanpham_id'");
         }
-
     }
+
+    }elseif (isset($_POST['thanhtoandangnhap'])){
+        $khachhang_id = $_SESSION['khachhang_id'];
+
+            $mahang = rand (0,9999);
+
+            for($i = 0; $i < count($_POST['thanhtoan_product_id']); $i++){
+
+                $sanpham_id = $_POST['thanhtoan_product_id'][$i];
+                $soluong = $_POST['thanhtoan_soluong'][$i];
+                $sql_donhang = mysqli_query ($con, "insert into tbl_donhang( sanpham_id, soluong, mahang, khachhang_id) values ( '$sanpham_id', '$soluong', '$mahang', '$khachhang_id')");
+                $sql_giaodich = mysqli_query ($con, "insert into tbl_giaodich( sanpham_id, soluong, magiaodich, khachhang_id) values ( '$sanpham_id', '$soluong', '$mahang', '$khachhang_id')");
+                $sql_delete_thanhtoan = mysqli_query ($con, "delete from tbl_giohang where sanpham_id = '$sanpham_id'");
+            }
 }
 ?>
 
@@ -86,12 +109,20 @@ if (isset($_POST['themgiohang'])){
         <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
             <span>G</span>iỏ hàng của bạn
         </h3>
+        <?php
+        if (isset($_SESSION['dangnhap_home'])){
+            echo '<p style="color: black;">Xin chào bạn: '.$_SESSION['dangnhap_home'].'<a href="index.php?quanly=giohang&dangxuat=1">|  đăng xuất</a></p>';
+        }else{
+            echo '';
+        }
+        ?>
         <!-- //tittle heading -->
         <div class="checkout-right">
             <?php
             $lay_giohang = "select * from tbl_giohang order by giohang_id desc ";
                 $sql_lay_giohang = mysqli_query ($con, $lay_giohang);
             ?>
+
             <div class="table-responsive">
                 <form action="" method="post">
                 <table class="timetable_sub">
@@ -147,13 +178,32 @@ if (isset($_POST['themgiohang'])){
                         <td colspan = "7">Tổng tiền: <?php echo number_format ($sum).' '.'vnđ'?></td>
                     </tr>
                     <tr>
-                        <td colspan="7"> <input type="submit" class="btn btn-success" value="Cập nhật giỏ hàng" name="capnhatsoluong"></td>
+                        <td colspan="6"> <input type="submit" class="btn btn-success" value="Cập nhật giỏ hàng" name="capnhatsoluong"></td>
+                        <?php
+                            $sql_giohang_select = mysqli_query ($con, "select * from tbl_giohang");
+                            $count_giohang_select = mysqli_num_rows ($sql_giohang_select) ;
+                            if (isset($_SESSION['dangnhap_home']) && $count_giohang_select > 0){
+                            while ($row_1 = mysqli_fetch_array ($sql_giohang_select)){
+                        ?>
+                                <input type="hidden" name="thanhtoan_soluong[]" value="<?php echo $row_1['soluong'] ?>" min="0">
+                                <input type="hidden" name="thanhtoan_product_id[]" value="<?php echo $row_1['sanpham_id'] ?>" min="0">
+                                <?php
+                            }
+                                ?>
+                        <td > <input type="submit" class="btn btn-primary" value="Thanh toán giỏ hàng" name="thanhtoandangnhap"></td>
+                        <?php
+
+                            }
+                        ?>
                     </tr>
                     </tbody>
                 </table>
                 </form>
             </div>
         </div>
+        <?php
+            if (!isset($_SESSION['dangnhap_home'])){
+        ?>
         <div class="checkout-left">
             <div class="address_form_agile mt-sm-5 mt-4">
                 <h4 class="mb-sm-4 mb-3">Thêm địa chỉ giao hàng</h4>
@@ -210,6 +260,9 @@ if (isset($_POST['themgiohang'])){
                 </form>
             </div>
         </div>
+        <?php
+            }
+        ?>
     </div>
 </div>
 <!-- //checkout page -->
