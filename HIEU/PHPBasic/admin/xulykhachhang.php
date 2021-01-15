@@ -25,6 +25,12 @@ include_once '../db/connect.php';
                     <a class="nav-link" href="xulydanhmuc.php?quanly=danhmuc">Danh mục</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="xulydanhmucbaiviet.php">Danh mục bài viết</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="xulybaiviet.php">Bài viết</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="xulysanpham.php">Sản phẩm</a>
                 </li>
                 <li class="nav-item">

@@ -51,8 +51,27 @@
                             }
                         }
                     ?>
-                    <li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-                        <a class="nav-link" href="product.php">Tin tức</a>
+                    <li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
+                        <?php
+                            $sql_danhmuctin = mysqli_query ($con, "select * from tbl_danhmuctin order by danhmuctin_id desc ");
+                        ?>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Tin tức
+                        </a>
+
+                        <div class="dropdown-menu">
+                            <?php
+                                if ($sql_danhmuctin){
+                                while ($row_danhmuctin = mysqli_fetch_array ($sql_danhmuctin)){
+                            ?>
+                                <a class="dropdown-item" href="?quanly=tintuc&id_tin=<?php echo $row_danhmuctin['danhmuctin_id']?>"><?php echo $row_danhmuctin['tendanhmuc']?></a>
+                                    <div class="dropdown-divider"></div>
+                            <?php
+                                    }
+                                }
+                            ?>
+                        </div>
+
                     </li>
                     <li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

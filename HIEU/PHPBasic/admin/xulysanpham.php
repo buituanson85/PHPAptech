@@ -70,6 +70,12 @@ if (isset($_GET['xoa'])){
                     <a class="nav-link" href="xulydanhmuc.php?quanly=danhmuc">Danh mục</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="xulydanhmucbaiviet.php">Danh mục bài viết</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="xulybaiviet.php">Bài viết</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="xulysanpham.php">Sản phẩm</a>
                 </li>
                 <li class="nav-item">
@@ -91,14 +97,14 @@ if (isset($_GET['xoa'])){
             ?>
             <div class="col-md-4">
                 <h4>Cập nhật sản phẩm</h4>
-                <form action="" method="post" enctype="multipart/form-data">
+                <br action="" method="post" enctype="multipart/form-data">
                     <label>Tên sản phẩm: </label>
                     <input type="text" class="form-control" name="tensanpham" value="<?php echo $row_capnhat['sanpham_name']?>">
                     <input type="hidden" class="form-control" name="id_update" value="<?php echo $row_capnhat['sanpham_id']?>">
                     </br>
                     <label>Hình ảnh sản phẩm: </label>
-                    <input type="file" class="form-control" name="hinhanh" placeholder="thêm hình ảnh sản phẩm">
-                    <img src="../uploads/<?php echo $row_capnhat['sanpham_image']?>" style="width: 20%">
+                    <input type="file" class="form-control" name="hinhanh" placeholder="thêm hình ảnh sản phẩm"></br>
+                    <img src="../uploads/<?php echo $row_capnhat['sanpham_image']?>" style="width: 200px">
                     </br>
                     <label>Giá sản phẩm: </label>
                     <input type="number" class="form-control" name="giasanpham" value="<?php echo $row_capnhat['sanpham_gia']?>">
@@ -222,7 +228,7 @@ if (isset($_GET['xoa'])){
                         <tr>
                             <td><?php echo $index?></td>
                             <td><?php echo $row_select_sp['sanpham_name']?></td>
-                            <td style="width: 100px"><img src="../uploads/<?php echo $row_select_sp['sanpham_image']?>" style="width: 40%; height: 30%"></td>
+                            <td style="width: 100px"><img src="../uploads/<?php echo $row_select_sp['sanpham_image']?>" style="width: 50px" ></td>
                             <td><?php echo $row_select_sp['sanpham_soluong']?></td>
                             <td><?php echo $row_select_sp['category_name']?></td>
                             <td><?php echo number_format ($row_select_sp['sanpham_gia']).' '.'vnđ'?></td>

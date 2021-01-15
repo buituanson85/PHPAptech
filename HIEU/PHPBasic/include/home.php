@@ -33,7 +33,7 @@
                                                 <div class="col-md-4 product-men mt-5">
                                                     <div class="men-pro-item simpleCart_shelfItem">
                                                         <div class="men-thumb-item text-center">
-                                                            <img src="images/<?php echo $row_sanpham['sanpham_image']?>" alt="">
+                                                            <img src="images/<?php echo $row_sanpham['sanpham_image']?>" alt="" style="max-width: 70%">
                                                             <div class="men-cart-pro">
                                                                 <div class="inner-men-cart-pro">
                                                                     <a href="?quanly=chitietsp&id=<?php echo $row_sanpham['sanpham_id'] ?>" class="link-product-add-cart">Quick View</a>

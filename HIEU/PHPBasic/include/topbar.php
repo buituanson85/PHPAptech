@@ -45,10 +45,16 @@ if (isset($_POST['dangnhap_home'])){
             <div class="col-lg-8 header-right mt-lg-0 mt-2">
                 <!-- header lists -->
                 <ul>
+                    <?php
+                        if (isset($_SESSION['dangnhap_home'])){
+                    ?>
                     <li class="text-center border-right text-white">
-                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
-                            <i class="fas fa-truck mr-2"></i>Xem đơn hàng</a>
+                        <a href="index.php?quanly=xemdonhang&khachhang=<?php echo $_SESSION['khachhang_id']?>" class="text-white">
+                            <i class="fas fa-truck mr-2"></i>Xem đơn hàng: <?php echo $_SESSION['dangnhap_home']?></a>
                     </li>
+                    <?php
+                       }
+                    ?>
                     <li class="text-center border-right text-white">
                         <i class="fas fa-phone mr-2"></i> 001 234 5678
                     </li>
@@ -166,9 +172,9 @@ if (isset($_POST['dangnhap_home'])){
                 <div class="row">
                     <!-- search -->
                     <div class="col-10 agileits_search">
-                        <form class="form-inline" action="#" method="post">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required>
-                            <button class="btn my-2 my-sm-0" type="submit">Search</button>
+                        <form class="form-inline" action="index.php?quanly=timkiem" method="post">
+                            <input class="form-control mr-sm-2" type="search" name="search_product" placeholder="Search" aria-label="Tìm kiếm sản phẩm" required>
+                            <button class="btn my-2 my-sm-0" name="search_button" type="submit">Tìm kiếm</button>
                         </form>
                     </div>
                     <!-- //search -->

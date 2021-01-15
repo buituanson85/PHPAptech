@@ -178,23 +178,28 @@ if (isset($_POST['themgiohang'])){
                         <td colspan = "7">Tổng tiền: <?php echo number_format ($sum).' '.'vnđ'?></td>
                     </tr>
                     <tr>
-                        <td colspan="6"> <input type="submit" class="btn btn-success" value="Cập nhật giỏ hàng" name="capnhatsoluong"></td>
-                        <?php
+                        <td colspan="7">
+
+                            <input type="submit" class="btn btn-success" value="Cập nhật giỏ hàng" name="capnhatsoluong">
+                            <?php
                             $sql_giohang_select = mysqli_query ($con, "select * from tbl_giohang");
                             $count_giohang_select = mysqli_num_rows ($sql_giohang_select) ;
                             if (isset($_SESSION['dangnhap_home']) && $count_giohang_select > 0){
                             while ($row_1 = mysqli_fetch_array ($sql_giohang_select)){
-                        ?>
-                                <input type="hidden" name="thanhtoan_soluong[]" value="<?php echo $row_1['soluong'] ?>" min="0">
-                                <input type="hidden" name="thanhtoan_product_id[]" value="<?php echo $row_1['sanpham_id'] ?>" min="0">
+                            ?>
+                            <input type="hidden" name="thanhtoan_soluong[]" value="<?php echo $row_1['soluong'] ?>" min="0">
+                            <input type="hidden" name="thanhtoan_product_id[]" value="<?php echo $row_1['sanpham_id'] ?>" min="0">
                                 <?php
                             }
                                 ?>
-                        <td > <input type="submit" class="btn btn-primary" value="Thanh toán giỏ hàng" name="thanhtoandangnhap"></td>
-                        <?php
+                            <input type="submit" class="btn btn-primary" value="Thanh toán giỏ hàng" name="thanhtoandangnhap">
+
+                                <?php
 
                             }
-                        ?>
+                            ?>
+                        </td>
+
                     </tr>
                     </tbody>
                 </table>

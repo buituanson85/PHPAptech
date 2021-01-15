@@ -69,7 +69,15 @@
         include ('include/chitietsp.php');
     }elseif ($tam == 'giohang'){
         include ('include/giohang.php');
-    }else{
+    }elseif ($tam == 'timkiem'){
+        include ('include/timkiem.php');
+    }elseif ($tam == 'tintuc'){
+        include ('include/tintuc.php');
+    }elseif ($tam == 'chitiettin'){
+        include ('include/chitiettin.php');
+    }elseif ($tam == 'xemdonhang'){
+        include ('include/xemdonhang.php');
+    } else{
         include ('include/home.php');
     }
 

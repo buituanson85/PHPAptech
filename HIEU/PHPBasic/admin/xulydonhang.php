@@ -6,6 +6,7 @@ include_once '../db/connect.php';
         $xulydonhang = $_POST['xulydonhang'];
         $mahang_xuly = $_POST['mahangxuly'];
         $sql_update_tinhtrang = mysqli_query ($con, "update tbl_donhang set tinhtrang = '$xulydonhang' where mahang = '$mahang_xuly'");
+        $sql_update_giaodich = mysqli_query ($con, "update tbl_giaodich set tinhtrang = '$xulydonhang' where magiaodich = '$mahang_xuly'");
     }
 ?>
 <?php
@@ -14,6 +15,15 @@ include_once '../db/connect.php';
         $sql_xoa_mahang = mysqli_query ($con, "delete from tbl_donhang where mahang = '$mahang_xoa'");
         header ('Location: xulydonhang.php');
     }
+    if (isset($_GET['xacnhanhuy']) && $_GET['mahang']){
+        $huydon = $_GET['xacnhanhuy'];
+        $magiaodich = $_GET['mahang'];
+    }else{
+        $huydon = '';
+        $magiaodich = '';
+    }
+    $sql_update_giaodich = mysqli_query ($con, "update tbl_giaodich set yeucauhuydon = '$huydon' where magiaodich = '$magiaodich'");
+    $sql_update_donhang = mysqli_query ($con, "update tbl_donhang set yeucauhuydon = '$huydon' where mahang = '$magiaodich'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +46,12 @@ include_once '../db/connect.php';
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="xulydanhmuc.php?quanly=danhmuc">Danh mục</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="xulydanhmucbaiviet.php">Danh mục bài viết</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="xulybaiviet.php">Bài viết</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="xulysanpham.php">Sản phẩm</a>
@@ -119,7 +135,7 @@ include_once '../db/connect.php';
         <div class="col-md-5">
             <h4>Liệt kê đơn hàng</h4>
             <?php
-            $sql_select_donhang = mysqli_query ($con, "select * from tbl_sanpham,tbl_khachhang,tbl_donhang where tbl_donhang.sanpham_id = tbl_sanpham.sanpham_id and tbl_donhang.khachhang_id = tbl_khachhang.khachhang_id  order by tbl_donhang.donhang_id desc ");
+            $sql_select_donhang = mysqli_query ($con, "select * from tbl_sanpham,tbl_khachhang,tbl_donhang where tbl_donhang.sanpham_id = tbl_sanpham.sanpham_id and tbl_donhang.khachhang_id = tbl_khachhang.khachhang_id group by tbl_donhang.mahang  order by tbl_donhang.donhang_id desc ");
             ?>
             <table class="table table-bordered ">
                 <tr>
@@ -129,6 +145,7 @@ include_once '../db/connect.php';
                     <th>Tên khách hàng</th>
                     <th>Ngày đặt</th>
                     <th>Ghi chú</th>
+                    <th>Huỷ đơn</th>
                     <th>Quản lý</th>
                 </tr>
                 <tbody>
@@ -153,6 +170,17 @@ include_once '../db/connect.php';
                                 <td><?php echo $row_donhang['name']?></td>
                                 <td><?php echo $row_donhang['ngaythanh']?></td>
                                 <td><?php echo $row_donhang['note']?></td>
+                                <td>
+                                    <?php
+                                        if ($row_donhang['yeucauhuydon'] == 0){
+                                            echo '';
+                                    }else if($row_donhang['yeucauhuydon'] == 1){
+                                        echo '<span style="color: red"><a href="xulydonhang.php?quanly=xemdonhang&mahang='.$row_donhang['mahang'].'&xacnhanhuydon=2">Xác nhận huỷ đơn</a></span>';
+                                    }else{
+                                            echo 'Đã huỷ';
+                                        }
+                                    ?>
+                                </td>
                                 <td><a href="?xoadonhang=<?php echo $row_donhang['mahang']?>">Xoá</a> || <a href="?quanly=xemdonhang&mahang=<?php echo $row_donhang['mahang']?>">Xem đơn hàng</a></td>
                             </tr>
                             <?php
