@@ -4,7 +4,7 @@
     include ('../dbConnection/dbConnection.php');
     include ('../includes/header.php');
 
-global $con;
+global $conn;
 ?>
             <div class="col-sm-9 col-md-10"><!-- start dash 2nd colom-->
                 <div class="row text-center mx-5">
@@ -40,7 +40,7 @@ global $con;
                 <p class="bg-dark text-white p-2">List of Requesters</p>
                 <?php
                     $sql = "SELECT * FROM requesterlogin_tb order by r_login_id";
-                    $result = mysqli_query ($con, $sql);
+                    $result = mysqli_query ($conn, $sql);
                     if ($result->num_rows > 0){
                         echo '
                         <table class="table">

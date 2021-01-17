@@ -13,12 +13,12 @@
     $db_host = "localhost:3306";
     $db_user = "root";
     $db_password = "";
-    $db_name = "hindi";
+    $db_name = "osms_db";
 
-    $con = new mysqli( $db_host, $db_user, $db_password, $db_name);
+    $conn = new mysqli( $db_host, $db_user, $db_password, $db_name);
 
-    if ($con -> connect_error){
+    if ($conn -> connect_error){
         die("Connection failed");
     }
-    mysqli_set_charset ($con, "utf8");
+    mysqli_set_charset ($conn, "utf8");
 ?>

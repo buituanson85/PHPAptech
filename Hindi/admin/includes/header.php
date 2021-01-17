@@ -8,11 +8,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--    Bootstrap 4 -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <!--    Fonta awesome -->
     <link rel="stylesheet" href="../libs/fontawesome/css/all.min.css">
     <!--    Custom Css-->
-    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../../css/custom.css">
 </head>
 
 <body>
