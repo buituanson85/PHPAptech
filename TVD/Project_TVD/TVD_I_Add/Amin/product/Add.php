@@ -26,7 +26,7 @@ if (!empty($_POST)){
             values ( "'.$title.'", "'.$price.'", "'.$thumbnail.'", "'.$content.'", 
                 "'.$id_category.'", "'.$created_at.'", "'.$updated_at.'")';
     execute ($sql);
-    header ('Location: index.php');
+    header ('Location: dashboard.php');
     die();
 
 }

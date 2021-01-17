@@ -33,7 +33,7 @@ if (isset($_POST['themgiohang'])){
 
     $sql_giohang = mysqli_query ($con, $giohang);
     if ($sql_giohang == 0){
-        header ('Location:index.php?quanly=chitietsp&id='.$sanpham_id);
+        header ('Location:dashboard.php?quanly=chitietsp&id='.$sanpham_id);
     }
 }elseif (isset($_POST['capnhatsoluong'])){ //update gio hang
 
@@ -111,7 +111,7 @@ if (isset($_POST['themgiohang'])){
         </h3>
         <?php
         if (isset($_SESSION['dangnhap_home'])){
-            echo '<p style="color: black;">Xin chào bạn: '.$_SESSION['dangnhap_home'].'<a href="index.php?quanly=giohang&dangxuat=1">|  đăng xuất</a></p>';
+            echo '<p style="color: black;">Xin chào bạn: '.$_SESSION['dangnhap_home'].'<a href="dashboard.php?quanly=giohang&dangxuat=1">|  đăng xuất</a></p>';
         }else{
             echo '';
         }

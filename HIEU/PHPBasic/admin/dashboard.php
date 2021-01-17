@@ -2,7 +2,7 @@
 <?php
     session_start ();
     if (!isset($_SESSION['dangnhap'])){
-        header ('Location: index.php');
+        header ('Location: dashboard.php');
     }
     if (isset($_GET['login'])){
         $dangxuat = $_GET['login'];
@@ -11,7 +11,7 @@
     }
     if ($dangxuat == 'dangxuat'){
         session_destroy ();
-        header ('Location: index.php');
+        header ('Location: dashboard.php');
     }
 ?>
 

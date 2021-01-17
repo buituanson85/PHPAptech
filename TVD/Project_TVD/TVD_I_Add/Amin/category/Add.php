@@ -11,7 +11,7 @@ if (!empty($_POST)){
     $sql = 'insert into category( name, created_at, updated_at)
             values ( "'.$name.'", "'.$created_at.'", "'.$updated_at.'")';
     execute ($sql);
-    header ('Location: index.php');
+    header ('Location: dashboard.php');
     die();
 
 }

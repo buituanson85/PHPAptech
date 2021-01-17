@@ -36,7 +36,7 @@ $fullName = $age = $address = '';
 
     //    var_dump ($sql);
         execute ($sql);
-        header ('Location: index.php');
+        header ('Location: dashboard.php');
         die();
     }
 //Edit

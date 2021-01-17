@@ -1,0 +1,30 @@
+
+/* change brand name font*/
+.navbar-brand{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* change navigation col */
+.navbar #myMenu .custom-nav .nav-item a{
+    color: #fff;
+}
+
+.navbar #myMenu .custom-nav .nav-item a:hover{
+    color: #F0AAB1;
+}
+
+/* Make header image responsive */
+
+.back-image{
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 90vh;
+    border-radius: 0px;
+    margin-top: 74px;
+}
+
+
+

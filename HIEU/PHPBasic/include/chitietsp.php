@@ -23,9 +23,9 @@
 //        $sql_giohang = mysqli_query ($con, $giohang);
 //        $count_giohang = mysqli_num_rows ($sql_giohang);
 //        if ($count_giohang > 0){
-//            header ('Location:index.php?quanly=giohang');
+//            header ('Location:dashboard.php?quanly=giohang');
 //        }else{
-//            header ('Location:index.php?quanly=chitietsp&id='.$sanpham_id);
+//            header ('Location:dashboard.php?quanly=chitietsp&id='.$sanpham_id);
 //        }
 //    }
 //?>

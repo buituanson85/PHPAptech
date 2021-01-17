@@ -21,7 +21,7 @@ if (!empty($_POST)){
             $sql = 'update category set name = "'.$name.'", updated_at = "'.$updated_at.'" where id = '.$id;
         }
         execute ($sql);
-        header ('Location: index.php');
+        header ('Location: dashboard.php');
         die();
     }
 }

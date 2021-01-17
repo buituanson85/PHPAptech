@@ -12,6 +12,6 @@ function register(){
         setcookie ("pwd", $password, time () + 24*60*60, "/");
         setcookie ("email", $email, time () + 24*60*60, "/");
         setcookie ("phone", $phoneNumner, time () + 24*60*60, "/");
-        header ("Location: index.php");
+        header ("Location: dashboard.php");
     }
 }

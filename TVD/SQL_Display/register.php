@@ -24,6 +24,6 @@ function register(){
         //đóng kết nối
         $connect -> close();
 
-        header ("Location: index.php");
+        header ("Location: dashboard.php");
     }
 }

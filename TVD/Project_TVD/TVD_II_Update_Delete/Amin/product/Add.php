@@ -38,7 +38,7 @@ if (!empty($_POST)){
              price = "'.$price.'", content = "'.$content.'", id_category = "'.$id_category.'" where id = '.$id;
         }
         execute ($sql);
-        header ('Location: index.php');
+        header ('Location: dashboard.php');
         die();
     }
 }

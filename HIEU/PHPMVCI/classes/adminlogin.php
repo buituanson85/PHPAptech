@@ -35,7 +35,7 @@
                     Session::set ('adminId', $value['adminId']);
                     Session::set ('adminUser', $value['adminUser']);
                     Session::set ('adminName', $value['adminName']);
-                    header("Location:index.php");
+                    header("Location:dashboard.php");
                 }else{
                     $alert = "User and Pass not match";
                     return $alert;

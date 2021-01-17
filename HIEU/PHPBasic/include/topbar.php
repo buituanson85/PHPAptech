@@ -13,7 +13,7 @@ if (isset($_POST['dangnhap_home'])){
             //khai báo session để dữ phiên làm việc
             $_SESSION['dangnhap_home'] = $row_dangnhap['name'];
             $_SESSION['khachhang_id'] = $row_dangnhap['khachhang_id'];
-            header ('Location: index.php?quanly=giohang');
+            header ('Location: dashboard.php?quanly=giohang');
         }else{
             echo "<script> alert('Mật khẩu or tk sai')</script>";
         }
@@ -33,7 +33,7 @@ if (isset($_POST['dangnhap_home'])){
 
     $_SESSION['dangnhap_home'] = $name;
     $_SESSION['khachhang_id'] = $row_khachang['khachhang_id'];
-    header ('Location: index.php?quanly=giohang');
+    header ('Location: dashboard.php?quanly=giohang');
 }
 ?>
 <!-- top-header -->
