@@ -21,7 +21,7 @@
 <body>
 <!-- Top Navbar -->
 <nav class="navbar navbar-dark fixed-top bg-danger flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="RequesterProfile.php">OSMS</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="RequesterProfile.php">STNM</a>
 </nav>
 
 <!-- Side Bar -->
@@ -33,31 +33,31 @@
                     <li class="nav-item">
                         <a class="nav-link <?php if(PAGE == 'RequesterProfile') { echo 'active'; } ?>" href="RequesterProfile.php">
                             <i class="fas fa-user"></i>
-                            Profile <span class="sr-only">(current)</span>
+                            Hồ sơ <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php if(PAGE == 'SubmitRequest') { echo 'active'; } ?>" href="SubmitRequest.php">
                             <i class="fab fa-accessible-icon"></i>
-                            Submit Request
+                            Gửi lời đề nghị
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php if(PAGE == 'CheckStatus') { echo 'active'; } ?>" href="CheckStatus.php">
                             <i class="fas fa-align-center"></i>
-                            Service Status
+                            Tình trạng dịch vụ
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php if(PAGE == 'Requesterchangepass') { echo 'active'; } ?>" href="Requesterchangepass.php">
                             <i class="fas fa-key"></i>
-                            Change Password
+                            Đổi mật khẩu
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../logout.php">
                             <i class="fas fa-sign-out-alt"></i>
-                            Logout
+                            Thoát
                         </a>
                     </li>
                 </ul>

@@ -27,7 +27,7 @@
 ?>
 
 <!-- start registration from container -->
-<div class="container pt-5">
+<div class="container pt-5" id="registration">
     <h2 class="text-center"> Tạo tài khoản </h2>
     <div class="row mt-4 mb-4">
         <div class="col-md-6 offset-md-3">

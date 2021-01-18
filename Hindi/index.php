@@ -33,7 +33,7 @@
         <ul class="navbar-nav pl-5 custom-nav">
             <li class="nav-item"><a href="index.php" class="nav-link">Trang chủ</a></li>
             <li class="nav-item"><a href="#Services" class="nav-link">Dịch vụ</a></li>
-            <li class="nav-item"><a href="#registrantion" class="nav-link">Đăng ký</a></li>
+            <li class="nav-item"><a href="#registration" class="nav-link">Đăng ký</a></li>
             <li class="nav-item"><a href="Requester/RequesterLogin.php" class="nav-link">Đăng nhập</a></li>
             <li class="nav-item"><a href="#Contact" class="nav-link">Liên hệ</a></li>
         </ul>
@@ -46,7 +46,7 @@
     <h1 class="text-uppercase text-danger font-weight-bold">Chào mừng tới STNM</h1>
     <p class="font-italic">Hạnh phúc của khách hàng là mục tiêu của chúng tôi</p>
     <a href="Requester/RequesterLogin.php" class="btn btn-success mr-4">Đăng nhập</a>
-    <a href="#" class="btn btn-danger mr-4">Đăng ký</a>
+    <a href="#registration" class="btn btn-danger mr-4">Đăng ký</a>
 </div>
 </header>
 <!-- end Header Jumbor-->
@@ -76,7 +76,7 @@
 <!-- End introduction section- container-->
 
 <!-- start services section -->
-<div class="container text-center">
+<div class="container text-center" id="Services">
     <h2>Dịch vụ của chúng tôi</h2>
     <div class="row mt-4">
         <div class="col-sm-4 mb-4">

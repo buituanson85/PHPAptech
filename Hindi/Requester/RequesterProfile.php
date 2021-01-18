@@ -26,10 +26,10 @@
             $sql = "UPDATE requesterlogin_tb SET r_name = '$rName' WHERE r_email = '$rEmail'";
             if($conn->query($sql) == TRUE){
                 // below msg display on form submit success
-                $passmsg = '<div class="alert alert-success col-sm-6 ml-5 mt-2" role="alert"> Updated Successfully </div>';
+                $passmsg = '<div class="alert alert-success col-sm-6 ml-5 mt-2" role="alert"> Cập nhật thành công </div>';
             } else {
                 // below msg display on form submit failed
-                $passmsg = '<div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert"> Unable to Update </div>';
+                $passmsg = '<div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert"> Không thể cập nhật </div>';
             }
         }
     }
@@ -37,10 +37,12 @@
     <div class="col-sm-6 mt-5">
         <form class="mx-5" method="POST">
             <div class="form-group">
+                <i class="fas fa-envelope"></i>
                 <label for="inputEmail">Email</label>
                 <input type="email" class="form-control" id="inputEmail" value=" <?php echo $rEmail ?>" readonly>
             </div>
             <div class="form-group">
+                <i class="fas fa-user"></i>
                 <label for="inputName">Họ và tên</label>
                 <input type="text" class="form-control" id="inputName" name="rName" value=" <?php echo $rName ?>">
             </div>
