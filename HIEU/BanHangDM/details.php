@@ -1,49 +1,74 @@
-<?php include 'inc/header.php'; ?>
-
+<?php
+    $filepath = realpath (dirname (__FILE__));
+    include ($filepath.'/inc/header.php');
+    global $pd, $cat, $ct;
+?>
+<?php
+    if (!isset($_GET['productId']) || $_GET['productId'] == null){
+        echo "<script>window.location = '404.php'</script>";
+    }else{
+        $productId = $_GET['productId'];
+    }
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+        $quantity = $_POST['quantity'];
+        $addToCart = $ct->add_to_cart ($quantity, $productId);
+    }
+?>
  <div class="main">
     <div class="content">
     	<div class="section group">
+            <?php
+                $get_product_details = $pd->get_details ($productId);
+                if ($get_product_details){
+                    while ($result_details = $get_product_details->fetch_assoc()){
+
+            ?>
 				<div class="cont-desc span_1_of_2">				
 					<div class="grid images_3_of_2">
-						<img src="images/preview-img.jpg" alt="" />
+						<img src="admin/uploads/<?php echo $result_details['image']?>" alt="" />
 					</div>
 				<div class="desc span_3_of_2">
-					<h2>Lorem Ipsum is simply dummy text </h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>					
+					<h2><?php echo $result_details['productName']?></h2>
+					<p><?php echo $result_details['product_desc']?></p>
 					<div class="price">
-						<p>Price: <span>$500</span></p>
-						<p>Category: <span>Laptop</span></p>
-						<p>Brand:<span>Samsnumg</span></p>
+						<p>Giá: <span><?php echo number_format ($result_details['price']).' '.'VNĐ'?></span></p>
+						<p>Danh mục: <span><?php echo $result_details['catName']?></span></p>
+						<p>Thương hiệu:<span><?php echo $result_details['brandName']?></span></p>
 					</div>
 				<div class="add-cart">
-					<form action="cart.php" method="post">
-						<input type="number" class="buyfield" name="" value="1"/>
+					<form action="" method="post">
+						<input type="number" class="buyfield" name="quantity" value="1" min="1"/>
 						<input type="submit" class="buysubmit" name="submit" value="Buy Now"/>
-					</form>				
+					</form>
+                    <?php
+                    if (isset($addToCart)){
+                        echo '<span style="color: red" class="pt-4">Sản phẩm đã có trong giỏ hàng</span>';
+                    }
+                    ?>
 				</div>
 			</div>
 			<div class="product-desc">
-			<h2>Product Details</h2>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-	        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                <h2>Thông tin chi tiết sản phẩm</h2>
+			<p><?php echo $result_details['product_desc']?></p>
 	    </div>
-				
 	</div>
+            <?php
+                    }
+                }
+            ?>
 				<div class="rightsidebar span_3_of_1">
-					<h2>CATEGORIES</h2>
+					<h2>Danh mục sản phẩm</h2>
+                    <?php
+                        $get_product_category = $cat->show_category ();
+                        if ($get_product_category){
+                        while ($result_category = $get_product_category->fetch_assoc()){
+                    ?>
 					<ul>
-				      <li><a href="productbycat.php">Mobile Phones</a></li>
-				      <li><a href="productbycat.php">Desktop</a></li>
-				      <li><a href="productbycat.php">Laptop</a></li>
-				      <li><a href="productbycat.php">Accessories</a></li>
-				      <li><a href="productbycat.php#">Software</a></li>
-					   <li><a href="productbycat.php">Sports & Fitness</a></li>
-					   <li><a href="productbycat.php">Footwear</a></li>
-					   <li><a href="productbycat.php">Jewellery</a></li>
-					   <li><a href="productbycat.php">Clothing</a></li>
-					   <li><a href="productbycat.php">Home Decor & Kitchen</a></li>
-					   <li><a href="productbycat.php">Beauty & Healthcare</a></li>
-					   <li><a href="productbycat.php">Toys, Kids & Babies</a></li>
+				      <li><a href="productbycat.php"><?php echo $result_category['catName']?></a></li>
+                        <?php
+                                }
+                            }
+                        ?>
     				</ul>
     	
  				</div>

@@ -1,4 +1,6 @@
-<?php include 'inc/header.php'; ?>
+<?php
+    include 'inc/header.php';
+?>
 
  <div class="main">
     <div class="content">

@@ -70,9 +70,8 @@ class product {
         $result = $this->db->select ($query);
         return $result;
     }
+
     public function update_product($data, $files, $id){
-
-
         $productName = mysqli_real_escape_string ($this->db->link, $data['productName']);
         $category = mysqli_real_escape_string ($this->db->link, $data['category']);
         $brand = mysqli_real_escape_string ($this->db->link, $data['brand']);
@@ -101,8 +100,8 @@ class product {
                     return $alert;
                 }
                 elseif (in_array ($file_ext, $permited)){
-//                    echo "<span class='error'>You can upload only:-".implode (', ', $permited)."</span>";
-                    $alert = "<span style='color: red'>You can upload only: ".implode (', ', $permited)."</span>";
+//                    echo "<span class='error'>You can uploads only:-".implode (', ', $permited)."</span>";
+                    $alert = "<span style='color: red'>You can uploads only: ".implode (', ', $permited)."</span>";
                     return $alert;
                 }
                 move_uploaded_file ($file_temp, $uploaded_image);

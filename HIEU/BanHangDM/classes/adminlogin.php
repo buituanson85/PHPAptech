@@ -1,12 +1,13 @@
 <?php
     $filepath = realpath (dirname (__FILE__));
-    include ($filepath.'/../libs/session.php');
+    include_once ($filepath.'/../libs/session.php');
     Session::checkLogin ();
-    include ('../libs/database.php');
-    include ('../helpers/format.php');
+    include_once ($filepath.'/../libs/database.php');
+    include_once ($filepath.'/../helpers/format.php');
+
 ?>
 <?php
-    class adminlogin{
+    class Adminlogin{
         private $db;
         private $fm;
         public function __construct(){

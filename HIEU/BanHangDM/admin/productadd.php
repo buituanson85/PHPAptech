@@ -1,82 +1,113 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
+<?php include '../classes/brand.php';?>
+<?php   include '../classes/category.php'; ?>
+<?php   include '../classes/product.php'; ?>
+<?php
+    $product = new Product();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+
+        $insertProduct = $product-> insert_product($_POST, $_FILES); // có hình ảnh phải có $_FILES  $_POST lấy tất cả dữ liệu
+    }
+?>
 <div class="grid_10">
     <div class="box round first grid">
-        <h2>Add New Product</h2>
-        <div class="block">               
+        <h2>Thêm sản phẩm</h2>
+        <div class="block">
+        <?php
+            if (isset($insertProduct)){
+                echo $insertProduct;
+            }
+        ?>
          <form action="" method="post" enctype="multipart/form-data">
             <table class="form">
                
                 <tr>
                     <td>
-                        <label>Name</label>
+                        <label>Tên sản phẩm</label>
                     </td>
                     <td>
-                        <input type="text" placeholder="Enter Product Name..." class="medium" />
+                        <input name="productName" type="text" placeholder="Nhập tên sản phẩm..." class="medium" />
                     </td>
                 </tr>
 				<tr>
                     <td>
-                        <label>Category</label>
+                        <label>Danh mục sản phẩm</label>
                     </td>
                     <td>
-                        <select id="select" name="select">
-                            <option>Select Category</option>
-                            <option value="1">Category One</option>
-                            <option value="2">Category Two</option>
-                            <option value="3">Category Three</option>
+                        <select id="select" name="category">
+                            <option>Chọn danh mục sản phẩm</option>
+                            <?php
+                                $cat = new Category();
+                                $catList = $cat->show_category ();
+                                if (isset($catList)){
+                                    while ($resultCat = $catList->fetch_assoc()){
+                            ?>
+                             <option value="<?php echo $resultCat['catId'] ?>"><?php echo $resultCat['catName'] ?></option>
+                            <?php
+                                    }
+                                }
+                            ?>
                         </select>
                     </td>
                 </tr>
 				<tr>
                     <td>
-                        <label>Brand</label>
+                        <label>Thương hiệu</label>
                     </td>
                     <td>
-                        <select id="select" name="select">
-                            <option>Select Brand</option>
-                            <option value="1">Brand One</option>
-                            <option value="2">Brand Two</option>
-                            <option value="3">Brand Three</option>
+                        <select id="select" name="brand">
+                            <option>Chọn thương hiệu sản phẩm</option>
+                            <?php
+                                $brand = new Brand();
+                                $brandList = $brand->show_brand ();
+                                if (isset($brandList)){
+                                    while ($resultBrand = $brandList->fetch_assoc()){
+                            ?>
+                            <option value="<?php echo $resultBrand['brandId'] ?>"><?php echo $resultBrand['brandName'] ?></option>
+                            <?php
+                                    }
+                                }
+                            ?>
                         </select>
                     </td>
                 </tr>
 				
 				 <tr>
                     <td style="vertical-align: top; padding-top: 9px;">
-                        <label>Description</label>
+                        <label>Mô tả sản phẩm</label>
                     </td>
                     <td>
-                        <textarea class="tinymce"></textarea>
+                        <textarea name="product_desc" class="tinymce"></textarea>
                     </td>
                 </tr>
 				<tr>
                     <td>
-                        <label>Price</label>
+                        <label>Giá sản phẩm</label>
                     </td>
                     <td>
-                        <input type="text" placeholder="Enter Price..." class="medium" />
+                        <input name="price" type="text" placeholder="Nhập giá sản phẩm..." class="medium" />
                     </td>
                 </tr>
             
                 <tr>
                     <td>
-                        <label>Upload Image</label>
+                        <label>Upload Ảnh sản phẩm</label>
                     </td>
                     <td>
-                        <input type="file" />
+                        <input type="file" name="image" />
                     </td>
                 </tr>
 				
 				<tr>
                     <td>
-                        <label>Product Type</label>
+                        <label>Sản phẩm nổi bật</label>
                     </td>
                     <td>
-                        <select id="select" name="select">
-                            <option>Select Type</option>
-                            <option value="1">Featured</option>
-                            <option value="2">Non-Featured</option>
+                        <select id="select" name="type">
+                            <option>Chọn loại</option>
+                            <option value="1">Nổi bật</option>
+                            <option value="2">Không nổi bật</option>
                         </select>
                     </td>
                 </tr>
@@ -84,7 +115,7 @@
 				<tr>
                     <td></td>
                     <td>
-                        <input type="submit" name="submit" Value="Save" />
+                        <input type="submit" name="submit" Value="Lưu" />
                     </td>
                 </tr>
             </table>
