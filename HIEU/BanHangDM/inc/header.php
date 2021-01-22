@@ -16,6 +16,7 @@
     $ur = new User();
     $cat = new Category();
     $pd = new Product();
+    $cs = new Customer();
 ?>
 <?php
     header("Cache-Control: no-cache, must-revalidate");
@@ -61,13 +62,38 @@
             <div class="shopping_cart">
                 <div class="cart">
                     <a href="#" title="View my shopping cart" rel="nofollow">
-                        <span class="cart_title">Giỏ hàng</span>
-                        <span class="no_product">(empty)</span>
+                        <span class="cart_title">GH:</span>
+                        <span class="no_product">
+                            <?php
+                                $get_check_cart = $ct->get_check_cart();
+                                if ($get_check_cart){
+                                    $sum = Session::get ("sum");
+                                    $qty = Session::get ('qty');
+                                    echo $sum.' '.'$'.' / '.'Sl-'.$qty;
+                                }else{
+                                    echo '(Empty)';
+                                }
+                            ?>
+                        </span>
                     </a>
                 </div>
             </div>
+            <?php
+                if (isset($_GET['customer_id'])){
+                    $dellCart = $ct->dell_all_data_cart();
+                    Session::destroy ();
+                }
+            ?>
             <div class="login">
-                <a href="login.php">Đăng nhập</a>
+                <?php
+                    $login_check = Session::get ('customer_login');
+                    if ($login_check == false){
+                        echo '<a href="login.php">Đăng nhập</a>';
+                    }else{
+                        echo '<a href="?customer_id='.Session::get ('customer_id').'">Logout</a>';
+                    }
+                ?>
+
             </div>
             <div class="clear"></div>
         </div>
@@ -78,7 +104,24 @@
             <li><a href="index.php">Trang chủ</a></li>
             <li><a href="products.php">Sản phẩm</a> </li>
             <li><a href="topbrands.php">Top sản phẩm</a></li>
-            <li><a href="cart.php">Giỏ hàng</a></li>
+            <?php
+                $check_cart = $ct->get_check_cart ();
+                if ($check_cart == true){
+                    echo '<li><a href="cart.php">Giỏ hàng</a></li>';
+                }else{
+                    echo '';
+                }
+            ?>
+
+
+            <?php
+                $login_check = Session::get ('customer_login');
+                if ($login_check){
+                    echo '<li><a href="profile.php">Profile</a> </li>';
+                }else{
+                    echo ' ';
+                }
+            ?>
             <li><a href="contact.php">Liên hệ</a> </li>
             <div class="clear"></div>
         </ul>

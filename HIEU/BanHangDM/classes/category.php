@@ -77,5 +77,11 @@
                 return $alert;
             }
         }
+
+        public function get_name_cat($catId){
+            $query = "select * from tbl_category where catId = '$catId' LIMIT 1";
+            $result = $this->db->select ($query);
+            return $result;
+        }
     }
 ?>

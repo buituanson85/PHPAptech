@@ -12,7 +12,6 @@
         $catName = $_POST['catName'];
         $updateCat = $cat->updates_category($catName, $catId);
     }
-
 ?>
     <div class="grid_10">
         <div class="box round first grid">

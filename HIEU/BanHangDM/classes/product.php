@@ -155,7 +155,7 @@
         // kết thúc back end.
 
         public function get_product_feature(){
-            $query = "select * from tbl_product where type = '1' LIMIT 4";
+            $query = "select * from tbl_product where type = '1' order by productId asc LIMIT 4";
             $result = $this->db->select ($query);
             return $result;
         }
@@ -173,6 +173,36 @@
             inner join tbl_brand
             on tbl_product.brandId = tbl_brand.brandId
             where tbl_product.productId = '$id'";
+            $result = $this->db->select ($query);
+            return $result;
+        }
+
+        public function get_lastes_apple(){
+            $query = "select * from tbl_product where brandId = '2' order by productId desc LIMIT 1";
+            $result = $this->db->select ($query);
+            return $result;
+        }
+
+        public function get_lastes_samsung(){
+            $query = "select * from tbl_product where brandId = '1' order by productId desc LIMIT 1";
+            $result = $this->db->select ($query);
+            return $result;
+        }
+
+        public function get_lastes_vinsmart(){
+            $query = "select * from tbl_product where brandId = '11' order by productId desc LIMIT 1";
+            $result = $this->db->select ($query);
+            return $result;
+        }
+
+        public function get_lastes_oppe(){
+            $query = "select * from tbl_product where brandId = '9' order by productId desc LIMIT 1";
+            $result = $this->db->select ($query);
+            return $result;
+        }
+
+        public function get_product_by_cat($id){
+            $query = "select * from tbl_product where catId = '$id' order by productId desc LIMIT 8";
             $result = $this->db->select ($query);
             return $result;
         }

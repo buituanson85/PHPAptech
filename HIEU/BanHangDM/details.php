@@ -1,7 +1,6 @@
 <?php
-    $filepath = realpath (dirname (__FILE__));
-    include ($filepath.'/inc/header.php');
-    global $pd, $cat, $ct;
+    include ('inc/header.php');
+//    global $pd, $cat, $ct;
 ?>
 <?php
     if (!isset($_GET['productId']) || $_GET['productId'] == null){
@@ -11,7 +10,7 @@
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
         $quantity = $_POST['quantity'];
-        $addToCart = $ct->add_to_cart ($quantity, $productId);
+        $AddToCart = $ct->add_to_cart ($productId, $quantity);
     }
 ?>
  <div class="main">
@@ -31,19 +30,19 @@
 					<h2><?php echo $result_details['productName']?></h2>
 					<p><?php echo $result_details['product_desc']?></p>
 					<div class="price">
-						<p>Giá: <span><?php echo number_format ($result_details['price']).' '.'VNĐ'?></span></p>
+						<p>Giá: <span><?php echo number_format ($result_details['price']).' '.'$'?></span></p>
 						<p>Danh mục: <span><?php echo $result_details['catName']?></span></p>
 						<p>Thương hiệu:<span><?php echo $result_details['brandName']?></span></p>
 					</div>
 				<div class="add-cart">
 					<form action="" method="post">
 						<input type="number" class="buyfield" name="quantity" value="1" min="1"/>
-						<input type="submit" class="buysubmit" name="submit" value="Buy Now"/>
+						<input type="submit" class="buysubmit" name="submit" value="Mua ngay"/>
 					</form>
                     <?php
-                    if (isset($addToCart)){
-                        echo '<span style="color: red" class="pt-4">Sản phẩm đã có trong giỏ hàng</span>';
-                    }
+                        if (isset($AddToCart)){
+                            echo "</br><span class='error' style='color: red'>Sản phẩm đã được bạn thêm vào giỏ hàng</span>";
+                        }
                     ?>
 				</div>
 			</div>
@@ -64,7 +63,7 @@
                         while ($result_category = $get_product_category->fetch_assoc()){
                     ?>
 					<ul>
-				      <li><a href="productbycat.php"><?php echo $result_category['catName']?></a></li>
+				      <li><a href="productbycat.php?catid=<?php echo $result_category['catId']?>"><?php echo $result_category['catName']?></a></li>
                         <?php
                                 }
                             }

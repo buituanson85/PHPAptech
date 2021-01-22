@@ -1,7 +1,7 @@
 <?php
     include 'inc/header.php';
     include 'inc/slider.php';
-    global $pd, $fm;
+//    global $pd, $fm;
 ?>
 
 <div class="main">
@@ -25,7 +25,7 @@
 					 <a href="details.php?productId=<?php echo $result['productId']?>"><img src="admin/uploads/<?php echo $result['image']?>" alt="" /></a>
 					 <h2><?php echo $result['productName']?></h2>
 					 <p><?php echo $fm->textShorten ($result['product_desc'], 80)?></p>
-					 <p><span class="price"><?php echo number_format ($result['price']).' '.'VNĐ'?></span></p>
+					 <p><span class="price"><?php echo number_format ($result['price']).' '.'$'?></span></p>
 				     <div class="button"><span><a href="details.php?productId=<?php echo $result['productId']?>" class="details">Details</a></span></div>
 				</div>
               <?php
@@ -48,7 +48,7 @@
 				<div class="grid_1_of_4 images_1_of_4">
 					 <a href="details.php?productId=<?php echo $result_new['productId']?>"><img src="admin/uploads/<?php echo $result_new['image']?>" alt="" /></a>
 					 <h2><?php echo $result_new['productName']?></h2>
-					 <p><span class="price"><?php echo number_format ($result_new['price']).' '.'VNĐ'?></span></p>
+					 <p><span class="price"><?php echo number_format ($result_new['price']).' '.'$'?></span></p>
 				     <div class="button"><span><a href="details.php?productId=<?php echo $result_new['productId']?>" class="details">Details</a></span></div>
 				</div>
                     <?php
