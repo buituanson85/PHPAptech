@@ -85,7 +85,7 @@
                         ?>
 						<table style="float:right;text-align:left;" width="40%">
 							<tr>
-								<th>Sub Total : </th>
+								<th>Tổng giá :</th>
 								<td>
                                     <?php
 //                                        $qty = $qty + $result_cart['quantity'];
@@ -105,7 +105,7 @@
                                 </td>
 							</tr>
 							<tr>
-								<th>Grand Total :</th>
+								<th>Tổng cộng :</th>
 								<td>
                                     <?php
                                         $grandTotal = $subtotal + $vatTotal;
@@ -126,7 +126,7 @@
 							<a href="index.php"> <img src="images/shop.png" alt="" /></a>
 						</div>
 						<div class="shopright">
-							<a href="login.php"> <img src="images/check.png" alt="" /></a>
+							<a href="payment.php"> <img src="images/check.png" alt="" /></a>
 						</div>
 					</div>
     	</div>  	

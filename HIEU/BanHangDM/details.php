@@ -45,6 +45,54 @@
                         }
                     ?>
 				</div>
+                    <div class="add-cart">
+                        <div class="button_details">
+                            <form action="" method="POST">
+
+                                <input type="hidden" name="productid" value="<?php echo $result_details['productId'] ?>"/>
+
+
+                                <?php
+
+                                $login_check = Session::get('customer_login');
+                                if($login_check){
+                                    echo '<input type="submit" class="buysubmit" name="compare" value="So sánh sản phẩm"/>'.'  ';
+
+                                }else{
+                                    echo '';
+                                }
+
+                                ?>
+
+
+                            </form>
+
+                            <form action="" method="POST">
+
+                                <input type="hidden" name="productid" value="<?php echo $result_details['productId'] ?>"/>
+
+
+                                <?php
+
+                                $login_check = Session::get('customer_login');
+                                if($login_check){
+
+                                    echo '<input type="submit" class="buysubmit" name="wishlist" value="Lưu vào yêu thích" />';
+                                }else{
+                                    echo '';
+                                }
+
+                                ?>
+                                <?php
+                                if(isset($insertWishlist)) {
+                                    echo $insertWishlist;
+                                }
+                                ?>
+
+                            </form>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
 			</div>
 			<div class="product-desc">
                 <h2>Thông tin chi tiết sản phẩm</h2>

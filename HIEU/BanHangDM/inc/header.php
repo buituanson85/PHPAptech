@@ -112,7 +112,15 @@
                     echo '';
                 }
             ?>
-
+            <?php
+            $customer_id = Session::get ('customer_id');
+            $check_cart = $ct->get_check_order ($customer_id);
+            if ($check_cart == true){
+                echo '<li><a href="orderdetails.php">Order</a></li>';
+            }else{
+                echo '';
+            }
+            ?>
 
             <?php
                 $login_check = Session::get ('customer_login');
