@@ -139,4 +139,11 @@
         },
     });
 
+    //tooltop activation
+    $(".action_links ul li a,.add_to_cart a,.footer_social_link ul li a").tooltip({
+        animated: "fade",
+        placement: "top",
+        container: "body",
+    });
+
 })(jQuery);
