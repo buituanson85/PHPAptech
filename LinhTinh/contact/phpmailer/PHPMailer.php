@@ -3209,7 +3209,7 @@ class PHPMailer
 
     /**
      * Encode a header value (not including its label) optimally.
-     * Picks shortest of Q, B, or none. Result inc folding if needed.
+     * Picks shortest of Q, B, or none. Result include folding if needed.
      * See RFC822 definitions for phrase, comment and text positions.
      *
      * @param string $str      The header value to encode

@@ -1,28 +1,7 @@
 <?php
-    global $conn;
-    define('TITLE', 'Dashboard');
-    define('PAGE', 'dashboard');
+
     include('includes/header.php');
-    include('../dbConnection/dbConnection.php');
-    session_start();
-    if(isset($_SESSION['is_adminlogin'])){
-        $aEmail = $_SESSION['aEmail'];
-    } else {
-        echo "<script> location.href='login.php'; </script>";
-    }
-    $sql = "SELECT max(request_id) FROM submitrequest_tb";
-    $result = $conn->query($sql);
-    $row = mysqli_fetch_row($result);
-    $submitrequest = $row[0];
 
-    $sql = "SELECT max(request_id) FROM assignwork_tb";
-    $result = $conn->query($sql);
-    $row = mysqli_fetch_row($result);
-    $assignwork = $row[0];
-
-    $sql = "SELECT * FROM technician_tb";
-    $result = $conn->query($sql);
-    $totaltech = $result->num_rows;
 ?>
     <div class="col-sm-9 col-md-10">
         <div class="row mx-5 text-center">

@@ -24,7 +24,8 @@
                 if (isset($login_check)){
                     echo $login_check;
                 }
-                ?></span>
+                ?>
+            </span>
 			<div>
 				<input type="text" placeholder="Tên đăng nhập"  name="adminUser"/>
 			</div>

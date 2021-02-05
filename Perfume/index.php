@@ -1863,177 +1863,177 @@
                             <div class="section_title section_title_style2">
                                 <h2>Hot Deals</h2>
                             </div>
+                            <div class="row">
+                                <div class="deals_carousel product_column1 owl-carousel">
+
+                                    <div class="col-lg-3">
+                                        <article class="single_product">
+                                            <figure>
+                                                <div class="product_thumb">
+                                                    <a href="#" class="primary_img">
+                                                        <img src="images/Deals/D1-1.png" alt="men">
+                                                    </a>
+                                                    <a href="#" class="secondary_img">
+                                                        <img src="images/Deals/D1-2.png" alt="men">
+                                                    </a>
+                                                    <div class="action_links">
+                                                        <ul>
+                                                            <li class="add_to_cart">
+                                                                <a href="#" title="Add to Cart">
+                                                                    <i class="fa fa-shopping-cart"></i>
+                                                                </a>
+                                                            </li>
+
+                                                            <li class="wishlist">
+                                                                <a href="#" title="Add to Wishlist">
+                                                                    <i class="fa fa-heart-o"></i>
+                                                                </a>
+                                                            </li>
+
+                                                            <li class="compare">
+                                                                <a href="#" title="Add to Compare">
+                                                                    <i class="fa fa-random"></i>
+                                                                </a>
+                                                            </li>
+
+                                                            <li class="quick_button">
+                                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="Quick View">
+                                                                    <i class="fa fa-eye"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <figcaption class="product_content">
+                                                    <!--                                                for deals timing-->
+                                                    <div class="product_timing">
+                                                        <div data-countdown="2021/02/02"></div>
+                                                    </div>
+                                                    <h4 class="product_name">
+                                                        <a href="#">Boss Men Bottled Infinte EU</a>
+                                                    </h4>
+                                                    <div class="price_box">
+                                                        <span class="old_price">Rs. 9100</span>
+                                                        <span class="current_price">Rs. 8650</span>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </article>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <article class="single_product">
+                                            <figure>
+                                                <div class="product_thumb">
+                                                    <a href="#" class="primary_img">
+                                                        <img src="images/Deals/D2-1.png" alt="men">
+                                                    </a>
+                                                    <a href="#" class="secondary_img">
+                                                        <img src="images/Deals/D2-2.png" alt="men">
+                                                    </a>
+                                                    <div class="action_links">
+                                                        <ul>
+                                                            <li class="add_to_cart">
+                                                                <a href="#" title="Add to Cart">
+                                                                    <i class="fa fa-shopping-cart"></i>
+                                                                </a>
+                                                            </li>
+
+                                                            <li class="wishlist">
+                                                                <a href="#" title="Add to Wishlist">
+                                                                    <i class="fa fa-heart-o"></i>
+                                                                </a>
+                                                            </li>
+
+                                                            <li class="compare">
+                                                                <a href="#" title="Add to Compare">
+                                                                    <i class="fa fa-random"></i>
+                                                                </a>
+                                                            </li>
+
+                                                            <li class="quick_button">
+                                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="Quick View">
+                                                                    <i class="fa fa-eye"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <figcaption class="product_content">
+                                                    <!--                                                for deals timing-->
+                                                    <div class="product_timing">
+                                                        <div data-countdown="2021/02/05"></div>
+                                                    </div>
+                                                    <h4 class="product_name">
+                                                        <a href="#">Ralph Lauren Men Polo Blue Bear</a>
+                                                    </h4>
+                                                    <div class="price_box">
+                                                        <span class="old_price">Rs. 7490</span>
+                                                        <span class="current_price">Rs. 7300</span>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </article>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <article class="single_product">
+                                            <figure>
+                                                <div class="product_thumb">
+                                                    <a href="#" class="primary_img">
+                                                        <img src="images/Deals/D3-1.png" alt="men">
+                                                    </a>
+                                                    <a href="#" class="secondary_img">
+                                                        <img src="images/Deals/D3-2.png" alt="men">
+                                                    </a>
+                                                    <div class="action_links">
+                                                        <ul>
+                                                            <li class="add_to_cart">
+                                                                <a href="#" title="Add to Cart">
+                                                                    <i class="fa fa-shopping-cart"></i>
+                                                                </a>
+                                                            </li>
+
+                                                            <li class="wishlist">
+                                                                <a href="#" title="Add to Wishlist">
+                                                                    <i class="fa fa-heart-o"></i>
+                                                                </a>
+                                                            </li>
+
+                                                            <li class="compare">
+                                                                <a href="#" title="Add to Compare">
+                                                                    <i class="fa fa-random"></i>
+                                                                </a>
+                                                            </li>
+
+                                                            <li class="quick_button">
+                                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="Quick View">
+                                                                    <i class="fa fa-eye"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <figcaption class="product_content">
+                                                    <!--                                                for deals timing-->
+                                                    <div class="product_timing">
+                                                        <div data-countdown="2021/02/04"></div>
+                                                    </div>
+                                                    <h4 class="product_name">
+                                                        <a href="#">Bvlgari Man In Black Orient</a>
+                                                    </h4>
+                                                    <div class="price_box">
+                                                        <span class="old_price">Rs. 7499</span>
+                                                        <span class="current_price">Rs. 6950</span>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </article>
+                                    </div>
+
+                                </div>
                         </div>
-                        <div class="row">
-                            <div class="deals_carousel product_column1 owl-carousel">
-
-                                <div class="col-lg-3">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="product_thumb">
-                                                <a href="#" class="primary_img">
-                                                    <img src="images/Deals/D1-1.png" alt="men">
-                                                </a>
-                                                <a href="#" class="secondary_img">
-                                                    <img src="images/Deals/D1-2.png" alt="men">
-                                                </a>
-                                                <div class="action_links">
-                                                    <ul>
-                                                        <li class="add_to_cart">
-                                                            <a href="#" title="Add to Cart">
-                                                                <i class="fa fa-shopping-cart"></i>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="wishlist">
-                                                            <a href="#" title="Add to Wishlist">
-                                                                <i class="fa fa-heart-o"></i>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="compare">
-                                                            <a href="#" title="Add to Compare">
-                                                                <i class="fa fa-random"></i>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="quick_button">
-                                                            <a href="#" data-toggle="modal" data-target="#modal_box" title="Quick View">
-                                                                <i class="fa fa-eye"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-<!--                                                for deals timing-->
-                                                <div class="product_timing">
-                                                    <div data-countdown="2021/02/02"></div>
-                                                </div>
-                                                <h4 class="product_name">
-                                                    <a href="#">Boss Men Bottled Infinte EU</a>
-                                                </h4>
-                                                <div class="price_box">
-                                                    <span class="old_price">Rs. 9100</span>
-                                                    <span class="current_price">Rs. 8650</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="product_thumb">
-                                                <a href="#" class="primary_img">
-                                                    <img src="images/Deals/D2-1.png" alt="men">
-                                                </a>
-                                                <a href="#" class="secondary_img">
-                                                    <img src="images/Deals/D2-2.png" alt="men">
-                                                </a>
-                                                <div class="action_links">
-                                                    <ul>
-                                                        <li class="add_to_cart">
-                                                            <a href="#" title="Add to Cart">
-                                                                <i class="fa fa-shopping-cart"></i>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="wishlist">
-                                                            <a href="#" title="Add to Wishlist">
-                                                                <i class="fa fa-heart-o"></i>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="compare">
-                                                            <a href="#" title="Add to Compare">
-                                                                <i class="fa fa-random"></i>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="quick_button">
-                                                            <a href="#" data-toggle="modal" data-target="#modal_box" title="Quick View">
-                                                                <i class="fa fa-eye"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <!--                                                for deals timing-->
-                                                <div class="product_timing">
-                                                    <div data-countdown="2021/02/05"></div>
-                                                </div>
-                                                <h4 class="product_name">
-                                                    <a href="#">Ralph Lauren Men Polo Blue Bear</a>
-                                                </h4>
-                                                <div class="price_box">
-                                                    <span class="old_price">Rs. 7490</span>
-                                                    <span class="current_price">Rs. 7300</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <article class="single_product">
-                                        <figure>
-                                            <div class="product_thumb">
-                                                <a href="#" class="primary_img">
-                                                    <img src="images/Deals/D3-1.png" alt="men">
-                                                </a>
-                                                <a href="#" class="secondary_img">
-                                                    <img src="images/Deals/D3-2.png" alt="men">
-                                                </a>
-                                                <div class="action_links">
-                                                    <ul>
-                                                        <li class="add_to_cart">
-                                                            <a href="#" title="Add to Cart">
-                                                                <i class="fa fa-shopping-cart"></i>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="wishlist">
-                                                            <a href="#" title="Add to Wishlist">
-                                                                <i class="fa fa-heart-o"></i>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="compare">
-                                                            <a href="#" title="Add to Compare">
-                                                                <i class="fa fa-random"></i>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="quick_button">
-                                                            <a href="#" data-toggle="modal" data-target="#modal_box" title="Quick View">
-                                                                <i class="fa fa-eye"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_content">
-                                                <!--                                                for deals timing-->
-                                                <div class="product_timing">
-                                                    <div data-countdown="2021/02/04"></div>
-                                                </div>
-                                                <h4 class="product_name">
-                                                    <a href="#">Bvlgari Man In Black Orient</a>
-                                                </h4>
-                                                <div class="price_box">
-                                                    <span class="old_price">Rs. 7499</span>
-                                                    <span class="current_price">Rs. 6950</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                </div>
-
-                            </div>
-                        </div>
+                    </div>
                         <!--                        deals product area end-->
 <!--                        Small product area starts          -->
                         <div class="small_product_area mb-68">

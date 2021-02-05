@@ -147,7 +147,7 @@
     });
 //  activation of one column of deal product
 
-    $(".product_column1").on("changed.owl.carousel initialized.owl.carousel", function (event){
+    $(".deals_carousel").on("changed.owl.carousel initialized.owl.carousel", function (event){
         $(event.target)
             .find(".owl-item")
             .removeClass("last")
@@ -194,7 +194,20 @@
     });
 
 // activation of one column of Best seller product
-    $(".sidebar_product_colum1").on("changed.owl.carousel initialized.owl.carousel", function (event){
+    $(".small_product_container").owlCarousel({
+        animateOut: "fadeOut",
+        autoplay: false,
+        loop: true,
+        nav: true,
+        autoplayTimeout: 5000,
+        items : 1,
+        dots: false,
+        navText : [
+            '<i class="fa fa-arrow-left"></i>',
+            '<i class="fa fa-arrow-right"></i>'
+        ],
+    });
+    $(".small_product_container").on("changed.owl.carousel initialized.owl.carousel", function (event){
         $(event.target)
             .find(".owl-item")
             .removeClass("last")

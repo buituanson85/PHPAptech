@@ -1,0 +1,150 @@
+@charset "utf-8";
+/* CSS Document */
+
+h1,h2,h3,h4{font-family:myriad pro;}
+
+.mens-product-detail{
+	width:986px;
+	height:1700px;
+	background:none !important;
+	margin-left:128px;
+	margin-top:150px;
+	}
+
+.aside-left-column, .aside-right-column{
+	width:493px;
+	height:600px;
+	background:none !important;
+	}
+
+
+		.aside-right-column h1, .aside-right-column h2{
+			font-family:myriad pro;
+			font-size:27px;
+			margin:0px;
+			}
+		.aside-right-column h2{
+			font-size:22px;
+			margin-top:10px;
+			}
+		.aside-right-column .rating{
+			width:350px;
+			line-height:20px;
+			margin-top:20px;
+			}
+	
+		.aside-right-column .rating .review a{
+			font-size:15px;
+			font-family:mangal;
+			color:#000;
+			margin-top:-5px;
+			margin-left:20px;
+			}
+
+		.price{
+			width:280px;
+			height:auto;
+			margin-top:30px;
+			font-size:26px;
+			}
+		.select-size{
+			width:250px;
+			height:auto;
+			margin-top:30px;
+			font-size:17px;
+			}
+		.size-title, .size-box{
+			width:250px;
+			}
+
+		.size{
+			margin-top:10px;
+			font-size:20px;
+			width:30px;
+			padding:5px;
+			text-align:center;
+			line-height:30px;
+			border:3px solid #fccb22;
+			margin-right:15px;
+			}
+		.size a{color:#fccb22;}
+		.size:hover a{color:#000;}	
+		.size:hover{border:3px solid #000;}	
+		
+		.buy-now {
+			width:205px;
+			height:45px;
+			background-color:#fcc508;
+			border-radius:10px;
+			margin-top:300px;
+			font-size:17px;
+			line-height:45px;
+			text-align:center;
+			}
+		.buy-now img{
+			margin-top:8px;
+			margin-left:10px;
+			}
+		.buy-now a{color:#cc3333;}
+		
+		.privacy-policy a{
+			color:#000;
+			font-size:12px;
+			}
+		.warranty{
+			width:90%;
+			margin-top:30px;
+			}
+
+.pro-desc{
+	width:986px;
+	height:auto;
+	background:none !important;
+	}
+
+	.pro-desc h3{
+		font-size:25px;
+		}
+		.pro-desc .border{
+			border:2px solid #666;
+			width:80%;
+			margin-top:-20px;
+			}
+		
+	.pro-desc .overview{
+		width:95%;
+		font-family:myriad pro;
+		font-size:14px;
+		margin-top:8px;
+		}
+
+	.specification{
+		width:986px;
+		}
+
+	h4{
+		font-weight:normal;
+		font-size:20px;
+		margin-bottom:15px;
+		text-align:left;
+		}
+
+	ul li{
+		font-family:myriad pro;
+		font-size:16px;
+		}
+	label{
+		width:250px;
+		}
+
+
+
+
+
+
+
+
+
+
+
+

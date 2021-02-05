@@ -1,0 +1,36 @@
+body		{
+		 font:20pt;
+		 font-family:arial black;
+		 color:white;
+		 background-color:green;
+		}
+
+h1		{
+		 font:10pt;
+		 font-family:monotype;
+		 color:Firebrick;
+		}
+
+h3		{
+		 font:8pt;
+		 font-family:lucida;
+		 color:Mediumvioletred;
+		}
+		 
+		 
+p		{
+		 font:0.15in;
+         	 margin-left:50px;
+ 		 margin-right:50px;
+		  color:chocolate;
+		 background-color:torquise;
+		}
+
+a:link		{ color:lightpink;text-transform:uppercase;text-decoration:none;text-transform:capitalize;}
+a:visited	{ color:crimson;text-decoration:over-line;text-transform:uppercase;}
+a:active	{ color:maroon;text-decoration:blink;text-transform:uppercase;}
+a:hover		{ color:mediumvioletred;text-decoration:blink;text-transform:uppercase;}
+
+.vimp		{background-color:indigo;color:orange;}
+#para		{background-color:white;color:black;}
+

@@ -207,7 +207,7 @@ MagnificPopup.prototype = {
 		
 
 		// Building markup
-		// main containers are created only once
+		// js containers are created only once
 		if(!mfp.bgOverlay) {
 
 			// Dark overlay
